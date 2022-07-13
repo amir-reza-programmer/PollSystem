@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+body {
+  min-height: 100vh;
+  /*display: flex;*/
+    overflow: hidden;
+    font-family: 'Mulish', sans-serif;
+}
+header {
+    height: 50px;
+}
+.container{
+    display: flex;
+    height: calc(100vh - (100px));
+    text-align: center;
+    flex-direction: column;
+    flex: 0 1 auto;
+}
+
+.footer{
+    height: 50px;
+}
+
+
+/* login */

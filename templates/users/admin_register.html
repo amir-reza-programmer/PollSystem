@@ -1,0 +1,32 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block head_css %}
+<link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'users/css/login.css' %}">
+{% endblock %}
+{% block title %}Poll System{% endblock title %}
+{% block special_navbar %}
+<li class="nav-item"><a class="nav-link" href="{% url 'users:login' %}">Login</a></li>
+{% endblock %}
+{% block content %}
+{% if registered %}
+<div style="text-align: center">
+
+<h1>thanks for registering</h1>
+<h2>you can log in after your account has been verified by admin.</h2>
+    </div>
+{% else %}
+<form enctype="multipart/form-data" method="post" style="display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 50px;">
+    {% csrf_token %}
+<!--    {{ user_form.as_p }}-->
+    {{ survey_user_form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+{% endif %}     
+
+{% endblock content %}

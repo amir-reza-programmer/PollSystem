@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>{% block title %} Home {% endblock title %}</title>
+    {% block head_favicon %}
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ STATIC_URL }}images/favicon.ico"
+    />
+    {% endblock head_favicon %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <meta http-equiv="Content-Language" value="en-US" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block head_css %} {% block head_css_site %}
+    <link
+      href="{{ STATIC_URL }}css/bootstrap.min.css"
+      rel="stylesheet"
+      media="screen"
+    />
+    <link href="{{ STATIC_URL }}css/app.css" rel="stylesheet" media="screen" />
+    {% endblock head_css_site %} {% block head_css_section %}
+    {% endblock head_css_section %} {% block head_css_page %}{% endblock head_css_page %}
+    {% endblock head_css %}
+  </head>
+</html>
+
+<body>
+
+  <header>
+
+      <nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <span class="navbar-brand">Poll System</span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+      {% block special_navbar %}
+      {% if user.is_authenticated %}
+            <li class="nav-item active"><a class="nav-link" href="{% url 'users:logout' %}">Logout</a></li>
+
+            {% else %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'users:login' %}">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'users:register' %}">Register</a></li>
+            {% endif %}
+      {% endblock special_navbar %}
+
+      </ul>
+    </div>
+  </div>
+</nav>
+  </header>
+  {# The Document Body #}
+  <div id="site-wrapper" class="container">
+    {% block content %} if you see this, something is wrong! {% endblock content %}
+  </div>
+  {# The Footer #}
+  <div class="footer">
+    <div class="container">
+      <p>Copyright KHU</p>
+    </div>
+  </div>
+</body>

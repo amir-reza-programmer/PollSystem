@@ -1,0 +1,25 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block head_css %}
+<link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+{% endblock %}
+{% block title %}Poll System{% endblock title %}
+{% block content %}
+    {% if user.is_authenticated %}
+            <p> there should be surveys </p>
+            {% else %}
+            <h1> welcome to the Poll System!</h1>
+            <h1>In order to use the system register or sign in.</h1>
+            {% endif %}
+{% endblock content %}
+{#<html>#}
+{#<head>#}
+{#    <title>jog</title>#}
+{#</head>#}
+{#<body>#}
+{#<div>#}
+{#    <p>hello</p>#}
+{#</div>#}
+{#</body>#}
+{#</html>#}

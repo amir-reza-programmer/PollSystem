@@ -1,0 +1,31 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block head_css %}
+<link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'users/css/login.css' %}">
+{% endblock %}
+{% block title %}Poll System{% endblock title %}
+{% block special_navbar %}
+<li class="nav-item"><a class="nav-link" href="{% url 'users:register' %}">Register</a></li>
+{% endblock %}
+{% block content %}
+<form class="prepared-form" action="{% url 'users:user_login' %}" method="post" style="display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 50px;">
+    {% csrf_token %}
+    <div>
+        {% csrf_token %}
+    <label for="username">Username:</label>
+    <input type="text" name="username" placeholder="Enter Username">
+        </div>
+    <div>
+        {% csrf_token %}
+    <label for="password">Username:</label>
+    <input type="password" name="password">
+    </div>
+    <input type="submit" name="" value="Login">
+</form>
+{% endblock content %}

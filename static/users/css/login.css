@@ -1,0 +1,35 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#prepared-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 50px;
+}
+.card {
+    height: fit-content;
+    /*margin: 20px;*/
+    margin: 50px;
+    min-height: 150px;
+    min-width: 250px;
+    padding-top: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.card:hover{
+    text-decoration: none;
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.card p{
+    text-align: left;
+}
+.card h5{
+    margin-bottom: 17px;
+}
