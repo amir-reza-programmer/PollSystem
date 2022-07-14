@@ -8,7 +8,7 @@ class SurveyUser(AbstractUser):
     # REQUIRED_FIELDS = ('user',)
     # USERNAME_FIELD = 'user'
     # user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
+    profile_pic = models.ImageField(upload_to='profile_pics', blank=True, default='avatar.png')
     is_admin = models.BooleanField(default=False)
     is_user = models.BooleanField(default=False)
 

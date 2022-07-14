@@ -14,7 +14,9 @@ def index_page(request):
     print(request)
     print(request.user.is_authenticated)
     print(request.user)
+
     if request.user.is_authenticated:
+        print(type(request.user.profile_pic))
         if request.user.is_admin:
             return render(request, 'users/admin_index.html', context)
         else:
@@ -25,11 +27,17 @@ def index_page(request):
 
 
 def register(request):
+    if request.user.is_authenticated:
+        response = redirect('/')
+        return response
     context = {}
     return render(request, 'users/register.html', context)
 
 
 def admin_register(request):
+    if request.user.is_authenticated:
+        response = redirect('/')
+        return response
     registered = False
 
     if request.method == 'POST':
@@ -57,6 +65,9 @@ def admin_register(request):
 
 
 def user_register(request):
+    if request.user.is_authenticated:
+        response = redirect('/')
+        return response
     registered = False
 
     if request.method == 'POST':
@@ -84,11 +95,17 @@ def user_register(request):
 
 
 def login_view(request):
+    if request.user.is_authenticated:
+        response = redirect('/')
+        return response
     context = {}
     return render(request, 'users/login.html', context)
 
 
 def user_login(request):
+    if request.user.is_authenticated:
+        response = redirect('/')
+        return response
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
@@ -115,6 +132,9 @@ def user_login(request):
 
 
 def admin_login(request):
+    if request.user.is_authenticated:
+        response = redirect('/')
+        return response
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')

@@ -1,4 +1,6 @@
+
 <!DOCTYPE html>
+
 <html>
 
   <head>
@@ -37,7 +39,22 @@
 
   <header>
 
-      <nav class="navbar navbar-expand-lg bg-light">
+
+
+      {% if user.is_authenticated %}
+    <nav class="navbar bg-light">
+  <div class="container-fluid">
+    <span class="navbar-brand">
+      <img src={{user.profile_pic.url}} alt="" width="30" height="24" class="d-inline-block align-text-top">
+      {{user.username}}
+    </span>
+    <span class="nav-item active"><a class="nav-link" href="{% url 'users:logout' %}">Logout</a></span>
+  </div>
+</nav>
+
+
+            {% else %}
+       <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
     <span class="navbar-brand">Poll System</span>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,20 +62,18 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-      {% block special_navbar %}
-      {% if user.is_authenticated %}
-            <li class="nav-item active"><a class="nav-link" href="{% url 'users:logout' %}">Logout</a></li>
-
-            {% else %}
+        {% block special_navbar %}
             <li class="nav-item"><a class="nav-link" href="{% url 'users:login' %}">Login</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'users:register' %}">Register</a></li>
-            {% endif %}
-      {% endblock special_navbar %}
-
+        {% endblock special_navbar %}
       </ul>
     </div>
   </div>
 </nav>
+            {% endif %}
+
+
+
   </header>
   {# The Document Body #}
   <div id="site-wrapper" class="container">
