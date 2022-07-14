@@ -1,0 +1,22 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block head_css %}
+<link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'users/css/login.css' %}">
+{% endblock %}
+{% block title %}Create Question{% endblock title %}
+{% block content %}
+
+<form enctype="multipart/form-data" method="post" style="display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 50px;">
+    <h4 style="margin-bottom: 30px">type the text of the question:</h4>
+    {% csrf_token %}
+    {{ question_form.as_p }}
+    <input type="submit" value="Next">
+</form>
+
+{% endblock content %}

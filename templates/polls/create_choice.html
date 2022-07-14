@@ -1,0 +1,32 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block head_css %}
+<link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'users/css/login.css' %}">
+{% endblock %}
+    {% block title %}Create Choice{% endblock title %}
+{% block content %}
+{% if created %}
+<div style="text-align: center; display: flex; flex-direction: column">
+
+<h1> the choice has been saved</h1>
+<div>
+    <a href="{% url 'polls:edit_survey' id=survey.id %}"><button class="btn btn-primary" style="min-width: 100px">finish</button></a>
+    <a href="{% url 'polls:create_choice' id=id %}"><button class="btn btn-primary" style="min-width: 100px">next choice</button></a>
+</div>
+</div>
+{% else %}
+<form enctype="multipart/form-data" method="post" style="display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 50px;">
+    <h4 style="margin-bottom: 30px">type the text of the question choice:</h4>
+    {% csrf_token %}
+    {{ choice_form.as_p }}
+
+    <input type="submit" value="Next">
+</form>
+{% endif %}
+{% endblock content %}

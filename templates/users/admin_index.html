@@ -6,12 +6,17 @@
 {% endblock %}
 {% block title %}Poll System{% endblock title %}
 {% block content %}
-    {% if user.is_authenticated %}
-            <p> there should be surveys </p>
-            {% else %}
-            <h1> welcome to the Poll System!</h1>
-            <h1>In order to use the system register or sign in.</h1>
-            {% endif %}
+<h2 style="text-align: start">Created Surveys:</h2>
+{% for survey in admin_created_surveys %}
+    <a href="{% url 'polls:edit_survey' id=survey.id %}" style="text-decoration: none; margin-top: 10px; margin-left: 20px;">
+<div class="card">
+  <div class="card-body" style="text-align: start">
+      <h5 class="card-title">{{survey.title}}</h5>
+  </div>
+</div>
+  </a>
+{% endfor %}
+<a href="{% url 'polls:create_survey' %}" style="text-align: left; margin-top: 10px; margin-left: 20px"><button class="btn btn-secondary">create new survey</button></a>
 {% endblock content %}
 {#<html>#}
 {#<head>#}
