@@ -7,7 +7,7 @@ from users.forms import UserForm, SurveyUserForm
 from django.contrib.auth import logout, authenticate, login
 from django.http import HttpResponse, HttpResponseRedirect
 
-from polls.views import survey_index
+from polls.views import admin_survey_index, user_survey_index
 
 
 # Create your views here.
@@ -20,10 +20,11 @@ def index_page(request):
     if request.user.is_authenticated:
         print(type(request.user.profile_pic))
         if request.user.is_admin:
-            return survey_index(request)
+            return admin_survey_index(request)
+        if request.user.is_user:
+            return user_survey_index(request)
         else:
-            return render(request, 'users/user_index.html', context)
-
+            return render(request, 'users/index.html', context)
     else:
         return render(request, 'users/index.html', context)
 

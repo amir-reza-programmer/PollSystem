@@ -21,6 +21,7 @@ class Choice(models.Model):
 class CandidateUsers(models.Model):
     survey_creator = models.ForeignKey(SurveyUser, related_name='survey_creator', on_delete=models.CASCADE)
     survey_taker = models.ForeignKey(SurveyUser, related_query_name='survey_taker', on_delete=models.CASCADE)
+    survey = models.ForeignKey(Survey, on_delete=models.CASCADE)
 
 
 class Answer(models.Model):

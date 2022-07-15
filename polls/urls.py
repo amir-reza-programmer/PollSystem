@@ -9,6 +9,7 @@ urlpatterns = [
     path('survey/create/question/<int:id>', views.create_question, name='create_question'),
     path('survey/create/choice/<int:id>', views.create_choice, name='create_choice'),
     path('survey/create/survey', views.create_survey, name='create_survey'),
+    path('survey/choose_takers/survey/<int:id>', views.choose_takers, name='choose_takers'),
     # path('survey/create/choice/<str:id>', views.create_choice, name='create_choice'),
 
 ]

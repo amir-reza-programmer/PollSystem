@@ -25,7 +25,7 @@
     margin-top: 10px;">
     <a href="{% url 'polls:create_question' id=survey_id %}"><button class="btn btn-secondary" style="min-width: 200px">add new question</button></a>
     <a href="{% url 'users:index' %}"><button class="btn btn-secondary" style="min-width: 200px">back to surveys</button></a>
-    <a href=""><button class="btn btn-secondary" style="min-width: 200px">choose survey takers</button></a>
+    <a href="{% url 'polls:choose_takers' id=survey_id %}"><button class="btn btn-secondary" style="min-width: 200px">choose survey takers</button></a>
 <!--    <a href="{% url 'polls:delete_survey' id=survey_id %}"><button class="btn btn-danger" style="min-width: 200px">delete survey</button></a>-->
 
  <button type="button" class="btn btn-danger"  style="min-width: 200px" data-toggle="modal" data-target="#exampleModal">
