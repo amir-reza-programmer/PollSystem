@@ -1,0 +1,36 @@
+{% extends 'users/base.html' %}
+{% load static %}
+<!--survey_dict questions-->
+{% block head_css %}
+<link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+{% for question_index in survey_dict %}
+<div class="card" style="margin-bottom: 5px; text-align: left;">
+  <div class="card-header">
+    Question {{question_index|add:"1"}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{questions|get_array_item:question_index|get_text}}</h5>
+     {% for choice_index in survey_dict|get_item:question_index %}
+    <p class="card-text">{{choice_index|add:"1"}}) {{survey_dict|get_item:question_index|get_item:choice_index}} &nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: larger;font-weight: bolder;">{{survey_result_dict|get_item:question_index|get_item:choice_index}}%</span></p>
+      {% endfor %}
+  </div>
+</div>
+
+{% endfor %}
+<div style="display: flex;gap: 1rem;
+    justify-content: flex-start;
+    margin-top: 10px;
+    flex-wrap: wrap;
+">
+    <a href="{% url 'polls:edit_survey' id=survey_id %}"><button class="btn btn-secondary" style="min-width: 150px">back</button></a>
+
+
+</div>
+
+
+
+{% endblock %}
+

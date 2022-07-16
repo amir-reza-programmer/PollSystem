@@ -3,23 +3,24 @@
 
 {% block head_css %}
 <link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'users/css/background.css' %}">
 {% endblock %}
 {% block title %}Poll System{% endblock title %}
 {% block content %}
+
     {% if user.is_authenticated %}
-            <p> there should be surveys </p>
+
+<div class="parent-div">
+        <div class="welcome">
+            <h2> you are the real admin :) </h2>
+        </div>
+        </div>
             {% else %}
+        <div class="parent-div">
+        <div class="welcome">
             <h1> welcome to the Poll System!</h1>
             <h1>In order to use the system register or sign in.</h1>
+        </div>
+        </div>
             {% endif %}
 {% endblock content %}
-{#<html>#}
-{#<head>#}
-{#    <title>jog</title>#}
-{#</head>#}
-{#<body>#}
-{#<div>#}
-{#    <p>hello</p>#}
-{#</div>#}
-{#</body>#}
-{#</html>#}

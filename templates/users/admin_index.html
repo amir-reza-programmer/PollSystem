@@ -3,6 +3,7 @@
 
 {% block head_css %}
 <link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+
 {% endblock %}
 {% block title %}Poll System{% endblock title %}
 {% block content %}
@@ -18,13 +19,3 @@
 {% endfor %}
 <a href="{% url 'polls:create_survey' %}" style="text-align: left; margin-top: 10px; margin-left: 20px"><button class="btn btn-secondary">create new survey</button></a>
 {% endblock content %}
-{#<html>#}
-{#<head>#}
-{#    <title>jog</title>#}
-{#</head>#}
-{#<body>#}
-{#<div>#}
-{#    <p>hello</p>#}
-{#</div>#}
-{#</body>#}
-{#</html>#}

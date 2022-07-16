@@ -2,7 +2,8 @@
 {% load static %}
 
 {% block head_css %}
-<link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'users/css/style.css' %}" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
 <link rel="stylesheet" href="{% static 'users/css/login.css' %}">
 {% endblock %}
 {% block title %}Choose Survey Taker{% endblock title %}
@@ -16,7 +17,8 @@
     <h4 style="margin-bottom: 30px">choose who can participate in this survey:</h4>
     {% csrf_token %}
     {{ survey_taker_form.as_p }}
-    <input type="submit" value="finish">
-</form>
 
+    <input type="submit" value="finish">
+    <h5 style="margin-top: 10px"> <span style="color: red; font-weight: bold">hint:</span> choose survey takers after you have finished designing questions and want users to participate in</h5>
+</form>
 {% endblock content %}

@@ -6,20 +6,45 @@
 {% endblock %}
 {% block title %}Poll System{% endblock title %}
 {% block content %}
-    {% if user.is_authenticated %}
-            <p> there should be surveys </p>
+<h2 style="text-align: start">Surveys to participate:</h2>
+{% if all_other_surveys_zero %}
+            <h4> there are no surveys for you to participate in. </h4>
             {% else %}
-            <h1> welcome to the Poll System!</h1>
-            <h1>In order to use the system register or sign in.</h1>
+            {% for survey in all_other_surveys %}
+        <a href="{% url 'polls:take_survey' survey_id=survey.id last_question=last_question_id %}" style="text-decoration: none; margin-top: 10px; margin-left: 20px;">
+    <div class="card">
+      <div class="card-body" style="text-align: start">
+          <h5 class="card-title">{{survey.title}}</h5>
+      </div>
+    </div>
+      </a>
+    {% endfor %}
             {% endif %}
+<br>
+<br>
+<h2 style="text-align: start">Participated Surveys:</h2>
+{% if participated_surveys_zero %}
+            <h4> no history of participated surveys! </h4>
+            {% else %}
+            {% for survey in participated_surveys %}
+        <a href="" style="text-decoration: none; margin-top: 10px; margin-left: 20px;">
+    <div class="card">
+      <div class="card-body" style="text-align: start">
+          <h5 class="card-title">{{survey.title}}</h5>
+      </div>
+    </div>
+      </a>
+    {% endfor %}
+            {% endif %}
+
+<!--{% for survey in admin_created_surveys %}-->
+<!--    <a href="{% url 'polls:edit_survey' id=survey.id %}" style="text-decoration: none; margin-top: 10px; margin-left: 20px;">-->
+<!--<div class="card">-->
+<!--  <div class="card-body" style="text-align: start">-->
+<!--      <h5 class="card-title">{{survey.title}}</h5>-->
+<!--  </div>-->
+<!--</div>-->
+<!--  </a>-->
+<!--{% endfor %}-->
+<!--<a href="{% url 'polls:create_survey' %}" style="text-align: left; margin-top: 10px; margin-left: 20px"><button class="btn btn-secondary">create new survey</button></a>-->
 {% endblock content %}
-{#<html>#}
-{#<head>#}
-{#    <title>jog</title>#}
-{#</head>#}
-{#<body>#}
-{#<div>#}
-{#    <p>hello</p>#}
-{#</div>#}
-{#</body>#}
-{#</html>#}

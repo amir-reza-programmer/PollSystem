@@ -20,7 +20,7 @@ header {
 
     display: flex;
 
-    min-height: calc(100vh - (105px));
+    min-height: calc(100vh - (145px));
     text-align: center;
     flex-direction: column;
     flex: 0 1 auto;

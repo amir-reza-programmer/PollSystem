@@ -1,0 +1,15 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block head_css %}
+<link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+{% endblock %}
+{% block title %}Poll System{% endblock title %}
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<h1 style="margin-bottom: 20px">finished</h1>
+<a href="{% url 'users:index' %}"><button class="btn btn-primary">back to home</button></a>
+{% endif %}
+{% endblock content %}
